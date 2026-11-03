@@ -4,7 +4,8 @@ name: Stock Desk Loop Scan
 # One job scans, sleeps, and rescans for ~5 hours, then dispatches its own
 # successor before GitHub's 6-hour job limit kills it - an endless relay.
 # The hourly schedule below is only a backup starter in case a handoff ever
-# fails. Concurrency keeps exactly one loop running, one queued at most.
+# fails (the schedule is only an emergency starter). Concurrency keeps
+# exactly one loop running, with at most one successor queued.
 on:
   workflow_dispatch:
     inputs:
